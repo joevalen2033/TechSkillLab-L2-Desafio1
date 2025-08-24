@@ -52,7 +52,7 @@ public class PetitionServiceImpl implements IPetitionService {
     public Flux<PetitionDTO> findByPriority(Integer p) {
         return petitionRepository.findAll()
                 .filter(petition -> petition.getPriority() == 5)
-                .map(petition -> petitionMapper.toDTO(petition));
+                .map(petitionMapper::toDTO);
     }
 
     //TO-DO: Check priorities with a delay of 1 second to show up the processing in console but requested in Swagger UI
