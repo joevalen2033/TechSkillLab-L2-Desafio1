@@ -39,7 +39,7 @@ public class BookServiceImpl implements IBookService {
     public Mono<BookDTO> findById(String id) {
         return bookRepository
                 .findById(id)
-                .map(book -> bookMapper.toDTO(book));
+                .map(bookMapper::toDTO);
     }
 
     @Override
@@ -48,6 +48,6 @@ public class BookServiceImpl implements IBookService {
         bookDTO.setAvailable(true);
         return bookRepository
                 .save(bookMapper.toEntity(bookDTO))
-                .map(book -> bookMapper.toDTO(book));
+                .map(bookMapper::toDTO);
     }
 }
